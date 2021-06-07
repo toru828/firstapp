@@ -15,19 +15,17 @@ class Users_model extends CI_Model {
         $data = array(
             'first_name' => $this->input->post('first_name'),
             'last_name' => $this->input->post('last_name'),
-            'email' => $this->input->post('email'),
-            'phone_number' => $this->input->post('phone_number')
+            'email' => $this->input->post('email')
         );
 
         return $this->db->insert('users', $data);
     }
 
-    public function update_user($user_id) {
+    public function update_userr($user_id) {
         $data = array(
             'first_name' => $this->input->post('first_name'),
             'last_name' => $this->input->post('last_name'),
-            'email' => $this->input->post('email'),
-            'phone_number' => $this->input->post('phone_number')
+            'email' => $this->input->post('email')
         );
 
         $this->db->where('id', $user_id);

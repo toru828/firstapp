@@ -25,7 +25,6 @@ class Users extends CI_Controller {
         $this->form_validation->set_rules('first_name', 'First name', 'required');
         $this->form_validation->set_rules('last_name', 'Last name', 'required');
         $this->form_validation->set_rules('email', 'Email', array('required', 'valid_email'));
-        $this->form_validation->set_rules('phone_number', 'Phone number', 'numeric');
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('header', $data);
@@ -47,7 +46,6 @@ class Users extends CI_Controller {
         $this->form_validation->set_rules('first_name', 'First name', 'required');
         $this->form_validation->set_rules('last_name', 'Last name', 'required');
         $this->form_validation->set_rules('email', 'Email', array('required','valid_email'));
-        $this->form_validation->set_rules('phone_number', 'Phone number', array('numeric','max_length[15]'));
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('header', $data); 
             $this->load->view('users/update', $data);
@@ -56,6 +54,7 @@ class Users extends CI_Controller {
             $this->users_model->update_user($user_id);
             redirect(base_url('/'));
         }
+
     }
 
 public function delete($user_id) {
