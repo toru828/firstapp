@@ -17,7 +17,7 @@
                   <td><?php echo $user["first_name"]; ?></td>
                   <td><?php echo $user["last_name"]; ?></td>
                   <td>
-                      <a href="#"><button class="btn btn-primary btn-sm">View</button></a>
+                      <a href="<?php echo site_url("users/detail/$user[id]"); ?>"><button class="btn btn-primary btn-sm">View</button></a>
                       <a href="<?php echo site_url("users/update/$user[id]"); ?>"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
                       <a onclick="return confirm('Are you sure to delete this user?')" href="<?php echo site_url("users/delete/$user[id]"); ?>"><button class="btn btn-sm">Delete</button></a>
                   </td>
