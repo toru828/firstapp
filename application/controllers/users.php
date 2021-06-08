@@ -9,6 +9,8 @@ class Users extends CI_Controller {
 
     public function index()
     {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
         $data["users"] = $this->users_model->get_users();
         $data["page_title"] = "List Of Users";
         $this->load->view('header', $data);
@@ -64,10 +66,19 @@ class Users extends CI_Controller {
     }
 
     public function detail($user_id) {
-    $data["user"] = $this->users_model->get_user($user_id);
+        $data["user"] = $this->users_model->get_user($user_id);
     
-    $this->load->view('header', $data);
-    $this->load->view('users/detail', $data);
-    $this->load->view('footer');
+        $this->load->view('header', $data);
+        $this->load->view('users/detail', $data);
+        $this->load->view('footer');
     }
+
+    public function delete_multi() {
+        $user_ids = $this->input->post('ids');
+        if ($user_ids !== null) {
+            $this->users_model->delete_users($user_ids);
+        }
+        redirect(base_url('/'));
+    }
+
 }
